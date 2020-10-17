@@ -67,10 +67,6 @@ a:hover {
 	background-color: #ddd;
 }
 
-.vcard {
-	padding: 5px;
-}
-
 .url, .email {
 	display: block;
 }
