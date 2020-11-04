@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento de Animais</title>
+</head>
+<body>
+    <center><h1>Sistema FazenTECH</h1></center>
+
+    <form method="post" id="fMonitoramento" action="">
+    <fieldset id="Monitoramento">
+        
+    <legend>Cadastro de Monitoramento de Animais Doentes</legend>
+    <p><label for="bident">Identificação da Vaca: </label><input type="number" name="aident" id="bident" min="0" max="999999999" placeholder="Digite o código" required name=bident/></p>
+    <p><label for="bdiagnostico">Diagnóstico: </label><input type="text" name="adiagnostico" id="bdiagnostico" size="50" maxlength="80" required name=bdiagnostico/></p>
+    <p><label for="btratamento">Tratamento: </label><input type="text" name="atratamento" id="btratamento" size="50" maxlength="80"required name=btratamento/></p>
+    <p><label for="btempo">Tempo de Tratamento: </label><input type="number" name="atempo" id="btempo" size="0" max="999" required name=btempo/></p>
+    
+    <input name="Submit" type="submit"  class="formobjects"
+            value="Gravar dados">
+    
+            <input name="Reset" type="reset" class="formobjects"
+            value="Redefinir">
+    </fieldset>
+    </fomr>   
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Animais</title>
+</head>
+
+<body>
+    <center><h1>Sistema FazenTECH</h1></center>
+
+    <form method="post" id="fCadastro" action="">
+<fieldset id="Cadastro">
+    
+<legend>Cadastro de Animais</legend>
+<p><label for="bident">Identificação da Vaca: </label><input type="number" name="aident" id="bident" min="0" max="9999999" placeholder="Digite o código"/></p>
+<p><label for="bespe">Especie: </label><input type="text" name="aespe" id="bespe" size="20" maxlength="30" placeholder="Digite a raça"/></p>
+<p><label for="bdata">Data da ordenha: </label> <input type="date" name="adata" id="bdata"/></p>
+<p><label for="btemp">Temperatura de leite: </label><input type="number" name="atemp" id="btemp" min="0" max="999" placeholder="Graus celsius"/></p>
+<p><label for="bprod">Produção a cada 4 anos: </label><input type="number" name="aprod" id="bprod" min="0" max="999999999" placeholder="Litros"/></p>
+<p><label for="binse">Inseminações: </label><input type="number" name="ainse" id="binse" min="0" max="999" placeholder="Quantidade"/></p>
+<p><label for="bparto">Estimativas de parto:</label><input type="date" name="aparto" id="bparto" placeholder="Digite a data"/></p>
+<p><label for="bseca">Secagem esperada: </label><input type="number" name="aseca" id="bseca" min="0" max="9999999"/></p>
+<input name="Submit" type="submit"  class="formobjects"
+        value="Gravar dados">
+
+        <input name="Reset" type="reset" class="formobjects"
+        value="Redefinir">
+</fieldset>
+</fomr>
+
+</body>
+</html>

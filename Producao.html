@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produção</title>
+</head>
+<body>
+    <center><h1>Sistema FazenTECH</h1></center>
+
+    <form method="post" id="fProdução" action="">
+    <fieldset id="Produção">
+        
+    <legend>Cadastro de Animais</legend>
+    <p><label for="bident">Identificação: </label><input type="number" name="aident" id="bident" min="0" max="999999" placeholder="Digite o código"/></p>
+    <p><label for="bespe">Especie: </label><input type="text" name="aespe" id="bespe" size="20" maxlength="30" placeholder="Digite a raça"/></p>
+    <p><label for="bdata">Data da ordenha: </label> <input type="date" name="adata" id="bdata" placeholder="Digite a data do processo"/></p>
+    <p><label for="bhorario">Horário: </label><input type="time" name="ahorario" id="bhorario" /></p>
+    <p><label for="bprod">Produção diária: </label><input type="number" name="aprod" id="bprod" min="0" max="999999999" placeholder="Litros"/></p>
+    <p><label for="bnome">Funcionário responsável: </label><input type="text" name="anome" id="bnome" size="50" maxlength="60" required name=bnome/></p>
+    
+    <input name="Submit" type="submit"  class="formobjects"
+            value="Gravar dados">
+    
+            <input name="Reset" type="reset" class="formobjects"
+            value="Redefinir">
+    </fieldset>
+    </fomr> 
+</body>
+</html>
