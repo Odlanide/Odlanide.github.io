@@ -1,70 +1,180 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-    <title>FazenTECH</title>
-    <link rel="stylesheet" href="style.css"/>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PASSF - Com Você em Todos os Momentos</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: url('image.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    header {
+      background-color: rgba(255, 255, 255, 0.9);
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: #4CAF50;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      font-size: 1.2rem;
+      color: #4CAF50;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    .menu-group ul {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .menu-group li {
+      margin: 5px 0;
+    }
+
+    .menu-group a {
+      display: block;
+      padding: 10px 15px;
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .menu-group a:hover {
+      background-color: #c8e6c9;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+      background-color: rgba(255, 255, 255, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #2e7d32;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        order: -1;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    
-        <center><h1>Sistema FazenTECH</h1></center>
 
-        <header id="cabecalho">
-        <img id="foto"src="https://s2.glbimg.com/nH731FlooW17MIFXQbvnA6HLAhE=/e.glbimg.com/og/ed/f/original/2019/03/07/pd_.jpg" width="900" height="600"/>
-        </header>
+  <header>
+    <h1>PASSF</h1>
+    <p>Com Você em Todos os Momentos</p>
+  </header>
 
-    <div id="interface">    
+  <main>
+    <nav class="sidebar">
+      <div class="menu-group">
+        <h2>Gestão de Clientes</h2>
         <ul>
-        
-        <div id="secao">
-
-            <li><a onclick="carregar('Animais.html')" href="Animais.html"><h2>Cadastro de Animais</h2></a></li>
-                                               
-        </div>
-
-        <div id="secao">
-        
-            <li><a onclick="carregar('Clientes.html')" href="Clientes.html"><h2>Cadastro de Clientes</h2></a></li>
-        
-        </div>
-    
-        <div id="secao">
-            
-            <li><a onclick="carregar('Produtos.html')" href="Produtos.html"><h2>Cadastro de Produtos</h2></a></li>
-        
-        </div>
-
-        <div id="secao">
-            
-            <li><a onclick="carregar('Funcionarios.html')" href="Funcionarios.html"><h2>Cadastro de Funcionários</h2></a></li>
-        
-        </div>
-
-        <div id="secao">
-            
-            <li><a onclick="carregar('Equipamentos.html')" href="Equipamentos.html"><h2>Cadastro de Equipamentos</h2></a></li>
-        
-        </div>
-
-        <div id="secao">
-            
-            <li><a onclick="carregar('Producao.html')" href="Producao.html"><h2>Cadastro de Produção</h2></a></li>
-        
-        </div>
-        <div id="secao">
-            
-            <li><a onclick="carregar('Monitoramento.html')" href="Monitoramento.html"><h2>Cadastro de Monitoramento</h2></a></li>
-        
-        </div>
+          <li><a href="#">Clientes</a></li>
+          <li><a href="#">Dependentes</a></li>
+          <li><a href="#">Consulta Contratos</a></li>
         </ul>
-        <footer id="rodape">
-               <p>Copyright &copy; 2020 - by Edinaldo Barbosa<br/>
-                    <a href="http://facebook.com/Edinaldo" target="_blank">/facebook</a></p>
-        </footer>    
-</div>
+      </div>
+
+      <div class="menu-group">
+        <h2>Financeiro</h2>
+        <ul>
+          <li><a href="#">Caixa</a></li>
+          <li><a href="#">Pagamentos</a></li>
+          <li><a href="#">Contas Agendadas</a></li>
+        </ul>
+      </div>
+
+      <div class="menu-group">
+        <h2>Contratos e Planos</h2>
+        <ul>
+          <li><a href="#">Contratos Cadastrar</a></li>
+          <li><a href="#">Inf. Planos</a></li>
+        </ul>
+      </div>
+
+      <div class="menu-group">
+        <h2>Administração</h2>
+        <ul>
+          <li><a href="#">Cadastro Fornecedor</a></li>
+          <li><a href="#">Relatórios</a></li>
+          <li><a href="#">Administração</a></li>
+          <li><a href="#">Trocar de Usuário</a></li>
+          <li><a href="#">Contate-nos</a></li>
+          <li><a href="#">Sair</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-info">
+        <p><strong>Unidade:</strong> Matriz</p>
+      </div>
+    </nav>
+
+    <section class="content">
+      <p>Bem-vindo ao sistema PASSF. Selecione uma opção no menu para começar.</p>
+    </section>
+  </main>
+
+  <footer>
+    Telefone: (87) 99952-0346 / 99951-8032 | <a href="https://www.passf.com.br"  style="color:white; text-decoration:underline;">www.passf.com.br</a>
+  </footer>
+
 </body>
 </html>
