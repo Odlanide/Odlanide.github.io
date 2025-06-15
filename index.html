@@ -1,27 +1,213 @@
-<!DOCTYPE html>
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Botão Clientes</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PASSF Funerária</title>
   <style>
-    body {
-      background-color: #fff;
-      text-align: center;
-      padding: 40px;
-      font-family: Arial, sans-serif;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    img {
-      width: 300px;
-      margin-bottom: 20px;
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: url('image.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    header {
+      background-color: rgba(30, 58, 95, 0.95); /* Azul escuro */
+      color: white;
+      text-align: center;
+      padding: 25px 20px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 270px;
+      background-color: rgba(255, 255, 255, 0.97);
+      padding: 20px;
+      box-shadow: 2px 0 6px rgba(0,0,0,0.12);
+      overflow-y: auto;
+      border-right: 1px solid #ddd;
+    }
+
+    .menu-group ul {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+
+    .menu-group li {
+      margin: 6px 0;
+    }
+
+    .content {
+      flex: 1;
+      padding: 40px 30px;
+      backdrop-filter: blur(4px);
+      background-color: rgba(255, 255, 255, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .dashboard-card {
+      background-color: #ffffff;
+      border-left: 5px solid #1E3A5F;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      max-width: 500px;
+    }
+
+    .dashboard-card h2 {
+      font-size: 1.4rem;
+      color: #1E3A5F;
+      margin-bottom: 12px;
+    }
+
+    .dashboard-card p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    footer {
+      background-color: #2C2C2C;
+      color: white;
+      text-align: center;
+      padding: 14px;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #B0B0B0;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        order: -1;
+        border-right: none;
+      }
+
+      .dashboard-card {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h2>Botão - Clientes</h2>
-  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAkCAIAAADTNOJyAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JQvct9rIgwAAAN1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ43oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBLdQ8cKw4AAa0jZQAAAABJRU5ErkJggg==" alt="Clientes">
+  <header>
+    <h1>PASSF FUNERÁRIA</h1>
+    <p>Com Você em Todos os Momentos</p>
+  </header>
 
-  <p>Clique com o botão direito na imagem acima → Salvar imagem como...</p>
+  <main>
+    <nav class="sidebar">
+      <!-- Grupo: Gestão de Clientes -->
+      <div class="menu-group">
+        <ul>
+        </ul>
+      </div>
+
+      <!-- Grupo: Financeiro -->
+      <div class="menu-group">
+        <ul>
+        </ul>
+      </div>
+
+      <!-- Grupo: Contratos e Planos -->
+      <div class="menu-group">
+        <ul>
+        </ul>
+      </div>
+
+      <!-- Grupo: Administração -->
+      <div class="menu-group">
+        <ul>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="content">
+      <div class="dashboard-card">
+        <h2>Bem-vindo ao Sistema PASSF</h2>
+        <p>Selecione uma opção no menu lateral para acessar os recursos do sistema.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Telefone: (87) 99952-0346 / 99951-8032 | 
+    <a href="https://www.passf.com.br"  target="_blank">www.passf.com.br</a>
+  </footer>
 
 </body>
 </html>
